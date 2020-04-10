@@ -1,5 +1,7 @@
 import React from "react";
 import "./App.css";
+import SidebarComponent from "./sidebar/sidebar";
+import EditorComponent from "./editor/editor";
 
 const firebase = require("firebase");
 
@@ -9,7 +11,7 @@ class App extends React.Component {
     this.state = {
       selectedNoteIndex: null,
       selectedNote: null,
-      notes: null
+      notes: null,
     };
   }
 
@@ -17,8 +19,8 @@ class App extends React.Component {
     firebase
       .firestore()
       .collection("notes")
-      .onSnapshot(serverUpdate => {
-        const notes = serverUpdate.docs.map(_doc => {
+      .onSnapshot((serverUpdate) => {
+        const notes = serverUpdate.docs.map((_doc) => {
           const data = _doc.data();
           data["id"] = _doc.id;
           return data;
@@ -29,7 +31,15 @@ class App extends React.Component {
   };
 
   render() {
-    return <div>hello world</div>;
+    return (
+      <div className="app-container">
+        <SidebarComponent
+          notes={this.state.notes}
+          selectedNoteIndex={this.state.selectedNoteIndex}
+        ></SidebarComponent>
+        <EditorComponent></EditorComponent>
+      </div>
+    );
   }
 }
 
