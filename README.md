@@ -39,4 +39,4 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 ### Access the live website
 
-Go to www.notes.netlify.com
+Go to www.noteseasy.netlify.com
