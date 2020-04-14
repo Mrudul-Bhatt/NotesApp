@@ -15,7 +15,7 @@ const firebaseConfig = {
   storageBucket: "evernote-clone-79c4a.appspot.com",
   messagingSenderId: "1002699384514",
   appId: "1:1002699384514:web:9442135dbe3105b17cbd5b",
-  measurementId: "G-QF1HVQS1K3"
+  measurementId: "G-QF1HVQS1K3",
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
@@ -25,7 +25,7 @@ ReactDOM.render(
   <React.StrictMode>
     <App />
   </React.StrictMode>,
-  document.getElementById("root")
+  document.getElementById("evernote-container")
 );
 
 // If you want your app to work offline and load faster, you can change

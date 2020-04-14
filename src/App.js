@@ -83,6 +83,25 @@ class App extends React.Component {
       selectedNoteIndex: newNoteIndex,
     });
   };
+
+  deleteNote = async (note) => {
+    const noteIndex = this.state.notes.indexOf(note);
+    await this.setState({
+      notes: this.state.notes.filter((_note) => _note !== note),
+    });
+    if (this.state.selectedNoteIndex === noteIndex) {
+      this.setState({ selectedNote: null, selectedNoteIndex: null });
+    } else {
+      this.state.notes.length > 1
+        ? this.selectNote(
+            this.state.notes[this.state.selectedNoteIndex - 1],
+            this.state.selectedNoteIndex - 1
+          )
+        : this.setState({ selectedNote: null, selectedNoteIndex: null });
+    }
+
+    firebase.firestore().collection("notes").doc(note.id).delete();
+  };
 }
 
 export default App;
